@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -20,3 +21,16 @@ def app():
     counties = open("top20_severity.html")
     counties_code = counties.read()
     components.html(counties_code, height=600)
+
+    combined = pd.read_csv('combined_df.csv')
+
+    def get_top(n): 
+        result_series = combined.nlargest(n, 'severity_index').county + ", " + combined.nlargest(n, 'severity_index').state
+        final_df = result_series.to_frame() 
+        final_df.rename({0:'Severity Ranking (Top 20)'}, axis = 1, inplace = True) 
+        final_df.reset_index(inplace = True, drop = True) 
+        return final_df
+    
+    choice = st.selectbox('Number of Counties', ('5','10','20','50')) 
+    if st.button('Submit', key = '1'):
+        st.write(get_top(int(choice)))
