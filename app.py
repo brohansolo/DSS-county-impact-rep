@@ -15,7 +15,7 @@ PAGES = {
         "Severity Index": severityindex
         }
 
-st.sidebar.title('County Impact for Covid-19')
+st.sidebar.title('Covid-19 County Impact')
 selection = st.sidebar.radio("Go to", list(PAGES.keys()));
 page = PAGES[selection];
 page.app();
