@@ -100,6 +100,8 @@ While we were able to find that data for individual states, we had to disregard 
 ## Explanations of Visualizations
 ---------------------------------
 
+To view the visualizations go to [this](https://county-impact-rep-dss.herokuapp.com/) site: https://county-impact-rep-dss.herokuapp.com/ 
+
 Most of the visualizations we’ve created center around choropleth maps of the United States.
 We created interactive maps with each predefined area indicating a US county.
 The colors regions represent statistical variables that represent an aggregate summary of a geographic characteristic within each county.
