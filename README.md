@@ -100,14 +100,23 @@ While we were able to find that data for individual states, we had to disregard 
 ## Explanations of Visualizations
 ---------------------------------
 
+Most of the visualizations we’ve created center around choropleth maps of the United States.
+We created interactive maps with each predefined area indicating a US county.
+The colors regions represent statistical variables that represent an aggregate summary of a geographic characteristic within each county.
+
+Here are the descripttions of some of those
+1. ICU Map - Represents number of ICU beds per county.
+2. % Elderly People Map - Gives the ratio of people over the age of 65 for each touny.
+3. Number of cases by county
+4. Rate of Change of Cases - Tracks how many more cases have 
+5. Rate of Change of Rate of Change of Cases
 
 
 ## Why our use of external data stands out
 ------------------------------------------
 
 1. We address a timely and relevant problem, especially since we’re in the onset of vaccine distribution (granted research still ongoing).
-2. We utilize continously updated data and will continue to make dynamic changes to our analysis based on change in COVID cases, new census data etc.
-
+2. We utilize continously updated data and will continue to make change our analysis based on change in COVID cases, new census data etc. 
 
 ## Interesting Learnings and Outcomes
 -------------------------------------
