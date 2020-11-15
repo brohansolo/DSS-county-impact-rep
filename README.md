@@ -11,7 +11,7 @@ This begs the question – **how can we maximise the number of American lives sa
 Our team, consisting of UCLA Juniors Rohan Bansal, Adhviath Vijay, and UCLA Sophomore Agrim Gupta, attempted to answer this question.
 
 
-### Methodology and Assumptions
+## Methodology and Assumptions
 
 An study to see which counties have been hardest hit by covid-19 and trying to assess which counties we should prioritize during vaccine distribution.
 
