@@ -15,5 +15,5 @@ def app():
     components.iframe("https://datawrapper.dwcdn.net/iWLyV/1/", height=550)
 
     # Deaths per Capita 
-    components.iframe("https://datawrapper.dwcdn.net/D0KIt/1/", height=550)
+    # components.iframe("https://datawrapper.dwcdn.net/D0KIt/1/", height=550)
 

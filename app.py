@@ -1,4 +1,5 @@
 import maps
+import severityindex
 import perCapitaNums
 import findings
 import streamlit as st
@@ -8,6 +9,7 @@ st.subheader("Made for DSS Datathon")
 
 
 PAGES = {
+        "Severity Index": severityindex,
         "County Stats": maps,
         "County Stats per Capita": perCapitaNums,
         "Methodology and Findings": findings

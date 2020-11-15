@@ -8,10 +8,10 @@ def app():
         The data in these maps represents the factors affecting the severity of covid-19 in different counties in the united states.
         ''')
 
-    st.subheader('Overlay Of all Factors Considered (Severity Index)')
-    severity_index = open("severity_index.html", 'r', encoding='utf-8')
-    severity_index_code = severity_index.read()
-    components.html(severity_index_code, height=550)
+#    st.subheader('Overlay Of all Factors Considered (Severity Index)')
+#    severity_index = open("severity_index.html", 'r', encoding='utf-8')
+#    severity_index_code = severity_index.read()
+#    components.html(severity_index_code, height=550)
 
     st.subheader('Number of Cases Per County')
     numCases = open("num_cases.html", 'r', encoding='utf-8')
