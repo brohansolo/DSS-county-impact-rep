@@ -5,12 +5,11 @@ st.subheader("Made for DSS Datathon")
 
 
 PAGES = {
-        "County Stats": ,
-        "Assessment Metrics":
-        "Methodology and Findings": ,
-        "About Us": 
+        "County Stats through Maps": maps.py,
+        "Methodology and Findings": findings.py,
         }
 
 st.sidebar.title('Navigation')
 selection = st.sidebar.radio("Go to", list(PAGES.keys()));
 page = PAGES[selection];
+page.app();
