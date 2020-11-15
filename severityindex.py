@@ -16,14 +16,14 @@ def app():
     
     st.subheader("Correlation of Various Factors Considered in Severity Index")
     st.image('correlationIndex.png', use_column_width = True)
-
-    st.subheader('The Counties which Need the Most Help')
-    counties = open("top20_severity.html")
-    counties_code = counties.read()
-    components.html(counties_code, height=600)
+ 
+    # counties = open("top20_severity.html")
+    # counties_code = counties.read()
+    # components.html(counties_code, height=600)
 
     combined = pd.read_csv('combined_df.csv')
 
+    st.subheader('The Counties which Need the Most Help')
     def get_top(n): 
         result_series = combined.nlargest(n, 'severity_index').county + ", " + combined.nlargest(n, 'severity_index').state
         final_df = result_series.to_frame() 
@@ -31,6 +31,6 @@ def app():
         final_df.reset_index(inplace = True, drop = True) 
         return final_df
     
-    choice = st.selectbox('Number of Counties', ('5','10','20','50')) 
-    if st.button('Submit', key = '1'):
+    choice = st.selectbox('Select Number of Counties', ('5','10','20','50', '100')) 
+    if st.button('Show Counties', key = '1'):
         st.write(get_top(int(choice)))
