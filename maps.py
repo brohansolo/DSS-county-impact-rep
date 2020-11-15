@@ -8,6 +8,10 @@ def app():
         The data in these maps represents the factors affecting the severity of covid-19 in different counties in the united states.
         ''')
 
+    numCases = open("num_cases.html", 'r', encoding='utf-8')
+    numCases_code = numCases.read()
+    components.html(numCases_code)
+
     # ICU Beds
     components.iframe("https://datawrapper.dwcdn.net/OvQv5/1/", height=550)
 
