@@ -9,10 +9,10 @@ st.subheader("Made for DSS Datathon")
 
 
 PAGES = {
-        "Severity Index": severityindex,
+        "Methodology and Findings": findings,
         "County Stats": maps,
         "County Stats per Capita": perCapitaNums,
-        "Methodology and Findings": findings
+        "Severity Index": severityindex
         }
 
 st.sidebar.title('Navigation')

@@ -13,3 +13,5 @@ def app():
     severity_index_code = severity_index.read()
     components.html(severity_index_code, height=550)
 
+    st.image('correlationIndex.png',
+       caption="Correlation of Various Factors Considered in Severity Index")
