@@ -1,5 +1,3 @@
-# Covid-19 Per-County Severity Analysis
-
 
 ## Intro to Problem Statement
 -----------------------------

@@ -4,8 +4,8 @@ import perCapitaNums
 import findings
 import streamlit as st
 
-st.title("County Impact for Covid-19")
-st.subheader("Made for DSS Datathon")
+# st.title("County Impact for Covid-19")
+# st.subheader("Made for DSS Datathon")
 
 
 PAGES = {
@@ -15,7 +15,7 @@ PAGES = {
         "Severity Index": severityindex
         }
 
-st.sidebar.title('Navigation')
+st.sidebar.title('County Impact for Covid-19')
 selection = st.sidebar.radio("Go to", list(PAGES.keys()));
 page = PAGES[selection];
 page.app();
