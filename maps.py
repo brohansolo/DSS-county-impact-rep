@@ -9,7 +9,6 @@ def app():
         ''')
 
     st.subheader('Overlay Of all Factors Considered (Severity Index)')
-    elderlyCount = open("elderlyCount.html", 'r', encoding='utf-8')
     severity_index = open("severity_index.html", 'r', encoding='utf-8')
     severity_index_code = severity_index.read()
     components.html(severity_index_code, height=550)
@@ -30,7 +29,7 @@ def app():
     components.html(secondDeriv_code, height=550)
 
     st.subheader('Elderly People Per County')
-    elderlyCount = open("elderlyCount.html", 'r', encoding='utf-8')
+    elderlyCount = open("ElderlyCount.html", 'r', encoding='utf-8')
     elderlyCount_code = elderlyCount.read()
     components.html(elderlyCount_code, height=550)
 
