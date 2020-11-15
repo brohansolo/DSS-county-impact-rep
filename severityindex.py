@@ -19,4 +19,4 @@ def app():
     st.subheader('The Counties which Need the Most Help')
     counties = open("top20_severity.html")
     counties_code = counties.read()
-    components.html(counties_code)
+    components.html(counties_code, height=600)
