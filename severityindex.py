@@ -12,9 +12,9 @@ def app():
     severity_index = open("severity_index.html", 'r', encoding='utf-8')
     severity_index_code = severity_index.read()
     components.html(severity_index_code, height=550)
-
-    st.image('correlationIndex.png',
-       caption="Correlation of Various Factors Considered in Severity Index")
+    
+    st.subheader("Correlation of Various Factors Considered in Severity Index")
+    st.image('correlationIndex.png', use_column_width = True)
 
     st.subheader('The Counties which Need the Most Help')
     counties = open("top20_severity.html")
