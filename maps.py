@@ -8,4 +8,4 @@ def app():
         The data in these maps represents the factors affecting the severity of covid-19 in different counties in the united states.
         ''')
 
-    components.iframe("https://datawrapper.dwcdn.net/OvQv5/1/", height=483)
+    components.iframe("https://datawrapper.dwcdn.net/OvQv5/1/", height=550)
