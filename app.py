@@ -7,7 +7,7 @@ st.subheader("Made for DSS Datathon")
 
 
 PAGES = {
-        "County Stats through Maps": maps,
+        "County Stats": maps,
         "Methodology and Findings": findings
         }
 
