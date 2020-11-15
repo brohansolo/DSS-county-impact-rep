@@ -1,6 +1,5 @@
 
 ## Intro to Problem Statement
------------------------------
 
 Moderna, Pfizer, AstraZeneca-Oxford, BioNTech, Sputnik V – These are all names synonymous with hope, hope that one day our world returns to normality.
 While leading vaccine researchers and manufacturers lead the charge of coming up with a reliable and functional vaccine, public policy experts are racing to identify the various scenarios around the distribution of these vaccines.
@@ -13,7 +12,7 @@ Our team, consisting of UCLA Juniors Rohan Bansal, Adhviath Vijay, and UCLA Soph
 
 
 ### Methodology and Assumptions
---------------------------------
+
 An study to see which counties have been hardest hit by covid-19 and trying to assess which counties we should prioritize during vaccine distribution.
 
 We started off by brainstorming the role of a vaccine in a pandemic, especially in context of COVID-19 and its recurring cases.
@@ -57,7 +56,6 @@ Some of the assumptions stated in this section and our project overall were:-
 6. For national interest purposes, the only demographic a vaccine distribution campaign will deal with is American citizens (thereby validating our use of census.gov data).
 
 ## Short Description of the Sources Used
-----------------------------------------
 
 1. data.census.gov - The Census Bureau is the leading source of quality data about the demographics of the United States Population and their conditions
 2. CMS (Centers for Medicare & Medicaid Services) - Their medicare coverage database provides national information about healthcare coverage for various conditions and insurance costs.
@@ -65,7 +63,6 @@ Some of the assumptions stated in this section and our project overall were:-
 
 
 ## Analysis Process
--------------------
 
 We started processing our data by gathering data. 
 We began gathering data initially from data.census.gov by using the tools demonstrated by Ms. Ana-Maria Garcia. 
@@ -96,7 +93,6 @@ While we were able to find that data for individual states, we had to disregard 
 
 
 ## Explanations of Visualizations
----------------------------------
 
 To view the visualizations go to [this](https://county-impact-rep-dss.herokuapp.com/) site: https://county-impact-rep-dss.herokuapp.com/ 
 
@@ -113,13 +109,12 @@ Here are the descripttions of some of those
 
 
 ## Why our use of external data stands out
-------------------------------------------
 
 1. We address a timely and relevant problem, especially since we’re in the onset of vaccine distribution (granted research still ongoing).
 2. We utilize continously updated data and will continue to make change our analysis based on change in COVID cases, new census data etc. 
 
 ## Interesting Learnings and Outcomes
--------------------------------------
+
 ### Severity Index
 
 Based on the different factors that we were able to find complete and legitimate data for on a county level, we were able to build a means to measure the severity of the situations that are faced by different counties.
@@ -138,12 +133,10 @@ The combined and normailzed weight of numerous factors paints a far better pictu
 
 
 ## Impact of our Project
-------------------------
 
 The severity index is **extensible**. Which means that it can be ported to different countries and be made either more specific or less specific.
 
 ## Flaws
---------
 
 Regardless to say, with the question that we’re trying to answer, there are going to be a lot of factors we need to consider. There are going to be a lot of factors that can’t simply be thought of in a period of two days.
 
