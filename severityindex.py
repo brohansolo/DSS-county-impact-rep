@@ -15,3 +15,8 @@ def app():
 
     st.image('correlationIndex.png',
        caption="Correlation of Various Factors Considered in Severity Index")
+
+    st.subheader('The Counties which Need the Most Help')
+    counties = open(top20_severity.html)
+    counties_code = counties.read()
+    components.html(counties_code)

@@ -142,4 +142,17 @@ The combined and normailzed weight of numerous factors paints a far better pictu
 ## Impact of our Project
 ------------------------
 
-Projected Numbers:
+The severity index is **extensible**. Which means that it can be ported to different countries and be made either more specific or less specific.
+
+## Flaws
+--------
+
+Regardless to say, with the question that we’re trying to answer, there are going to be a lot of factors we need to consider. There are going to be a lot of factors that can’t simply be thought of in a period of two days.
+
+1. The method using which we took the first derivative may have led to some inaccuracies.
+We tracked the changes in COVID cases for a short period of time instead of tracking it over a period of weeks.
+This may have led to inaccuracies in the second derivative as well.
+
+2. We built the Severity Index by weighing our identified factors on the basis of how well they correlated with number of deaths.
+
+3. Didn’t account for recovery rate, this is definitely something that we can include in the model.
