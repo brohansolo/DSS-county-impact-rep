@@ -27,7 +27,7 @@ def app():
     def get_top(n): 
         result_series = combined.nlargest(n, 'severity_index').county + ", " + combined.nlargest(n, 'severity_index').state
         final_df = result_series.to_frame() 
-        final_df.rename({0:'Severity Ranking (Top 20)'}, axis = 1, inplace = True) 
+        final_df.rename({0:'Severity Ranking'}, axis = 1, inplace = True) 
         final_df.reset_index(inplace = True, drop = True) 
         return final_df
     
