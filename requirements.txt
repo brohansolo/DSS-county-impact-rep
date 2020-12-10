@@ -2,4 +2,8 @@ streamlit
 pandas
 numpy
 plotly
-scikit-learn
+sklearn
+seaborn
+matplotlib
+json
+urllib
