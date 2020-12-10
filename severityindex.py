@@ -60,17 +60,15 @@ def app():
                                 )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     #     fig.update(layout_coloraxis_showscale=False)
-        st.write('This is plt.show')
-        st.write(plt.show())
-        st.write('This is f')
-        st.write(f)
-        st.write('This is f.show')
-        st.write(f.show())
+        # st.write('This is plt.show')
+        # st.write(plt.show())
+        # st.write('This is f')
+        # st.write(f)
+        # st.write('This is f.show')
+        # st.write(f.show())
         # st.write(fig)
 
         return fig
-        # plt.show()
-        # fig.show()
     #     return n2
 
     columns.remove('COVID Cases per Capita') 
@@ -116,7 +114,19 @@ def app():
 
     # combined = pd.read_csv('combined_df.csv')
 
-    # st.subheader('The Counties which Need the Most Help')
+
+    st.subheader('The Counties which Need the Most Help')
+
+    df_copy = user_merged.copy() 
+    df_copy.county = df_copy.county.str.replace(' County','') 
+
+    def n_most_severe(n): 
+        result_series = df_copy.nlargest(n, 'severity_index').county + ", " + df_copy.nlargest(n, 'severity_index').state 
+        final_df = result_series.to_frame() 
+        final_df.rename({0:'Counties of Interest'}, axis = 1, inplace = True) 
+        final_df.reset_index(inplace = True, drop = True) 
+        return final_df 
+
     # def get_top(n): 
     #     result_series = combined.nlargest(n, 'severity_index').county + ", " + combined.nlargest(n, 'severity_index').state
     #     final_df = result_series.to_frame() 
@@ -125,5 +135,8 @@ def app():
     #     return final_df
     
     # choice = st.selectbox('Select Number of Counties', ('5','10','20','50', '100')) 
-    # if st.button('Show Counties', key = '1'):
-    #     st.write(get_top(int(choice)))
+    choice = st.slider('Select Number of Counties', 0,100 ) 
+    if st.button('Submit', key = '1'):
+        #  st.write(get_top(int(choice)))
+        st.write(n_most_severe(int(choice)))
+        st.balloons()
