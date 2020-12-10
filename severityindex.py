@@ -60,6 +60,9 @@ def app():
                                 )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     #     fig.update(layout_coloraxis_showscale=False)
+        st.write(plt)
+        # st.write(fig)
+
         return fig
         # plt.show()
         # fig.show()
