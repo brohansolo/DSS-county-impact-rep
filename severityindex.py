@@ -24,12 +24,9 @@ def app():
     columns = list(merged_data.columns)
     my_dict = {k: v for v, k in enumerate(columns)}
 
-    
-
     with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
         counties = json.load(response)
 
-    globalvar = pd.DataFrame()   
 
     user_merged = merged_data.copy()
     def plot_severity(features, target):
@@ -48,8 +45,6 @@ def app():
         m =  user_merged['severity_index']
         user_merged['severity_index'] = np.log(m, where=(m>0))
         user_merged['severity_index'] = (user_merged['severity_index'] - np.min(user_merged['severity_index'])) / (np.max(user_merged['severity_index']) - np.min(user_merged['severity_index']))
-        global globalvar 
-        globalvar = user_merged
 
         fig = px.choropleth_mapbox(user_merged, geojson=counties, locations='fips', color= 'severity_index',
                                 color_continuous_scale="speed",
@@ -70,7 +65,6 @@ def app():
         # st.write('This is f.show')
         # st.write(f.show())
         # st.write(fig)
-        get_matrix(matrix)
 
         return fig
     #     return n2
@@ -116,7 +110,7 @@ def app():
     # # counties_code = counties.read()
     # # components.html(counties_code, height=600)
 
-    # combined = pd.read_csv('combined_df.csv')
+    combined = pd.read_csv('combined_df.csv')
 
 
     st.subheader('The Counties which Need the Most Help')
@@ -124,23 +118,25 @@ def app():
     # globalvar = globalvar.copy() 
     globalvar.county = globalvar.county.str.replace(' County','') 
 
-    def n_most_severe(n): 
-        result_series = globalvar.nlargest(n, 'severity_index').county + ", " + globalvar.nlargest(n, 'severity_index').state 
-        final_df = result_series.to_frame() 
-        final_df.rename({0:'Counties of Interest'}, axis = 1, inplace = True) 
-        final_df.reset_index(inplace = True, drop = True) 
-        return final_df 
-
-    # def get_top(n): 
-    #     result_series = combined.nlargest(n, 'severity_index').county + ", " + combined.nlargest(n, 'severity_index').state
+    # def n_most_severe(n): 
+    #     result_series = globalvar.nlargest(n, 'severity_index').county + ", " + globalvar.nlargest(n, 'severity_index').state 
     #     final_df = result_series.to_frame() 
-    #     final_df.rename({0:'Severity Ranking'}, axis = 1, inplace = True) 
+    #     final_df.rename({0:'Counties of Interest'}, axis = 1, inplace = True) 
     #     final_df.reset_index(inplace = True, drop = True) 
-    #     return final_df
+    #     return final_df 
+
+    def get_top(n): 
+        result_series = combined.nlargest(n, 'severity_index').county + ", " + combined.nlargest(n, 'severity_index').state
+        final_df = result_series.to_frame() 
+        final_df.rename({0:'Severity Ranking'}, axis = 1, inplace = True) 
+        final_df.reset_index(inplace = True, drop = True) 
+        return final_df
     
-    # choice = st.selectbox('Select Number of Counties', ('5','10','20','50', '100')) 
-    choice = st.slider('Select Number of Counties', 0,100 ) 
+    choice = st.selectbox('Select Number of Counties', ('5','10','20','50', '100')) 
     if st.button('Submit', key = '2'):
-        #  st.write(get_top(int(choice)))
-        st.write(n_most_severe(int(choice)))
-        st.balloons()
+        st.write(get_top(int(choice)))
+    # choice = st.slider('Select Number of Counties', 0,100 ) 
+    # if st.button('Submit', key = '2'):
+    #     #  st.write(get_top(int(choice)))
+    #     st.write(n_most_severe(int(choice)))
+    #     st.balloons()
