@@ -18,10 +18,10 @@ def app():
     numCases_code = numCases.read()
     components.html(numCases_code, height=550)
 
-    # st.subheader('Rate of Change of Cases Per County')
-    # firstDeriv = open("firstDerivative.html", 'r', encoding='utf-8')
-    # firstDeriv_code = firstDeriv.read()
-    # components.html(firstDeriv_code, height=550)
+    st.subheader('Rate of Change of Cases Per County')
+    firstDeriv = open("firstDerivative.html", 'r', encoding='utf-8')
+    firstDeriv_code = firstDeriv.read()
+    components.html(firstDeriv_code, height=550)
 
     # st.subheader('Rate of Change of Rate of Change of Cases Per County')
     # secondDeriv = open("secondDerivative.html", 'r', encoding='utf-8')
