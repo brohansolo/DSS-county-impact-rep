@@ -13,6 +13,11 @@ def app():
     # severity_index_code = severity_index.read()
     # components.html(severity_index_code, height=550)
 
+    st.subheader('Fire Map')
+    fireMap = open("firemap1.html", 'r', encoding='utf-8')
+    fireMap_code = fireMap.read()
+    components.html(fireMap_code, height=550)
+
     st.subheader('Number of Cases Per County')
     numCases = open("num_cases.html", 'r', encoding='utf-8')
     numCases_code = numCases.read()
@@ -34,7 +39,7 @@ def app():
     components.html(elderlyCount_code, height=550)
 
     # ICU Beds
-    components.iframe("https://datawrapper.dwcdn.net/OvQv5/3/", height=550)
+    components.iframe("https://datawrapper.dwcdn.net/OvQv5/1/", height=550)
 
     # Proportion of Elderly People
     # components.iframe("https://datawrapper.dwcdn.net/yarxi/1/", height=550)

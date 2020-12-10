@@ -4,8 +4,6 @@ import streamlit as st
 def app():
     st.write("# Methodology and Findings")
 
-    https://chart-studio.plotly.com/~avijay/13/#
-
     def read_markdown_file(markdown_file):
             return Path(markdown_file).read_text()
     methodology = read_markdown_file("README.md")
