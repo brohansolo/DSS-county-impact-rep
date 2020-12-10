@@ -27,6 +27,10 @@ def app():
     with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
         counties = json.load(response)
 
+    def get_matrix(matrix):
+        f, ax = plt.subplots(figsize=(8, 6)) 
+        sns.heatmap(matrix, mask=np.zeros_like(matrix, dtype=np.bool), cmap = "flare_r", square=True, ax=ax) 
+        return ax 
 
     user_merged = merged_data.copy()
     def plot_severity(features, target):
@@ -67,6 +71,7 @@ def app():
         # st.write('This is f.show')
         # st.write(f.show())
         # st.write(fig)
+        get_matrix(matrix)
 
         return fig
     #     return n2
@@ -117,11 +122,11 @@ def app():
 
     st.subheader('The Counties which Need the Most Help')
 
-    df_copy = user_merged.copy() 
-    df_copy.county = df_copy.county.str.replace(' County','') 
+    # user_merged = user_merged.copy() 
+    user_merged.county = user_merged.county.str.replace(' County','') 
 
     def n_most_severe(n): 
-        result_series = df_copy.nlargest(n, 'severity_index').county + ", " + df_copy.nlargest(n, 'severity_index').state 
+        result_series = user_merged.nlargest(n, 'severity_index').county + ", " + user_merged.nlargest(n, 'severity_index').state 
         final_df = result_series.to_frame() 
         final_df.rename({0:'Counties of Interest'}, axis = 1, inplace = True) 
         final_df.reset_index(inplace = True, drop = True) 
