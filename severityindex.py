@@ -24,13 +24,12 @@ def app():
     columns = list(merged_data.columns)
     my_dict = {k: v for v, k in enumerate(columns)}
 
+    
+
     with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
         counties = json.load(response)
 
-    def get_matrix(matrix):
-        f, ax = plt.subplots(figsize=(8, 6)) 
-        sns.heatmap(matrix, mask=np.zeros_like(matrix, dtype=np.bool), cmap = "flare_r", square=True, ax=ax) 
-        return ax 
+    globalvar = pd.DataFrame()   
 
     user_merged = merged_data.copy()
     def plot_severity(features, target):
@@ -46,11 +45,11 @@ def app():
         scalars = features * n2
         user_merged['severity_index'] = (scalars.astype(float).sum(1)) 
 
-
         m =  user_merged['severity_index']
         user_merged['severity_index'] = np.log(m, where=(m>0))
         user_merged['severity_index'] = (user_merged['severity_index'] - np.min(user_merged['severity_index'])) / (np.max(user_merged['severity_index']) - np.min(user_merged['severity_index']))
-
+        global globalvar 
+        globalvar = user_merged
 
         fig = px.choropleth_mapbox(user_merged, geojson=counties, locations='fips', color= 'severity_index',
                                 color_continuous_scale="speed",
@@ -122,11 +121,11 @@ def app():
 
     st.subheader('The Counties which Need the Most Help')
 
-    # user_merged = user_merged.copy() 
-    user_merged.county = user_merged.county.str.replace(' County','') 
+    # globalvar = globalvar.copy() 
+    globalvar.county = globalvar.county.str.replace(' County','') 
 
     def n_most_severe(n): 
-        result_series = user_merged.nlargest(n, 'severity_index').county + ", " + user_merged.nlargest(n, 'severity_index').state 
+        result_series = globalvar.nlargest(n, 'severity_index').county + ", " + globalvar.nlargest(n, 'severity_index').state 
         final_df = result_series.to_frame() 
         final_df.rename({0:'Counties of Interest'}, axis = 1, inplace = True) 
         final_df.reset_index(inplace = True, drop = True) 
