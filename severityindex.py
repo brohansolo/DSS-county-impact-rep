@@ -64,17 +64,19 @@ def app():
         fig.show()
     #     return n2
 
-    columns.remove('COVID Cases per Capita') 
-    columns.remove('COVID Deaths per Capita') 
-    columns.remove('Total COVID Cases') 
-    columns.remove('Total COVID Deaths')
+    # columns.remove('COVID Cases per Capita') 
+    # columns.remove('COVID Deaths per Capita') 
+    # columns.remove('Total COVID Cases') 
+    # columns.remove('Total COVID Deaths')
 
-    target = st.selectbox('Select Basis of Severity', ('COVID Cases per Capita', 'COVID Deaths per Capita', 'Total COVID Cases', 'Total COVID Deaths')) 
-    features = st.multiselect('Select Variable(s) to use in Severity Index', columns) 
-    user_input1 = [my_dict[x] for x in features] 
+    user_input2 = st.selectbox('Select Basis of Severity', ('COVID Cases per Capita', 'COVID Deaths per Capita', 'Total COVID Cases', 'Total COVID Deaths')) 
+    user_input1 = st.multiselect('Select Variable(s) to use in Severity Index', columns) 
+    user_input1 = [my_dict[x] for x in user_input1] 
+    # user_input1 += my_dict[target]
+    user_input1.append(my_dict[user_input2]) 
  
     if st.button('Submit', key = '1'): 
-        st.write(plot_severity(user_input1, target), use_column_width = True) 
+        st.write(plot_severity(user_input1, user_input2), use_column_width = True) 
 
 #    user_input2 = target
 
