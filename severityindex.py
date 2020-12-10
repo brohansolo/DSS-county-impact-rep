@@ -116,7 +116,7 @@ def app():
     st.subheader('The Counties which Need the Most Help')
 
     # globalvar = globalvar.copy() 
-    globalvar.county = globalvar.county.str.replace(' County','') 
+    # globalvar.county = globalvar.county.str.replace(' County','') 
 
     # def n_most_severe(n): 
     #     result_series = globalvar.nlargest(n, 'severity_index').county + ", " + globalvar.nlargest(n, 'severity_index').state 
