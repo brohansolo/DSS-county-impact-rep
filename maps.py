@@ -14,7 +14,7 @@ def app():
     # components.html(severity_index_code, height=550)
 
     st.subheader('Number of Cases Per County')
-    numCases = open("num_cases.html", 'r', encoding='utf-8')
+    numCases = open("CovidCount.html", 'r', encoding='utf-8')
     numCases_code = numCases.read()
     components.html(numCases_code, height=550)
 
