@@ -9,10 +9,10 @@ def app():
         ''')
 
     # Proportion of Elderly People
-    components.iframe("https://datawrapper.dwcdn.net/yarxi/1/", height=550)
+    components.iframe("https://datawrapper.dwcdn.net/yarxi/2/", height=550)
 
     # Covid Cases Per Capita
-    components.iframe("https://datawrapper.dwcdn.net/iWLyV/1/", height=550)
+    components.iframe("https://datawrapper.dwcdn.net/iWLyV/2/", height=550)
 
     # Deaths per Capita 
     # components.iframe("https://datawrapper.dwcdn.net/D0KIt/1/", height=550)
