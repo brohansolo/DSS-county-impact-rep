@@ -136,7 +136,7 @@ def app():
     
     # choice = st.selectbox('Select Number of Counties', ('5','10','20','50', '100')) 
     choice = st.slider('Select Number of Counties', 0,100 ) 
-    if st.button('Submit', key = '1'):
+    if st.button('Submit', key = '2'):
         #  st.write(get_top(int(choice)))
         st.write(n_most_severe(int(choice)))
         st.balloons()
