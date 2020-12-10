@@ -60,14 +60,15 @@ def app():
                                 )
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     #     fig.update(layout_coloraxis_showscale=False)
-        plt.show()
-        fig.show()
+        return fig
+        # plt.show()
+        # fig.show()
     #     return n2
 
-    # columns.remove('COVID Cases per Capita') 
-    # columns.remove('COVID Deaths per Capita') 
-    # columns.remove('Total COVID Cases') 
-    # columns.remove('Total COVID Deaths')
+    columns.remove('COVID Cases per Capita') 
+    columns.remove('COVID Deaths per Capita') 
+    columns.remove('Total COVID Cases') 
+    columns.remove('Total COVID Deaths')
 
     user_input2 = st.selectbox('Select Basis of Severity', ('COVID Cases per Capita', 'COVID Deaths per Capita', 'Total COVID Cases', 'Total COVID Deaths')) 
     user_input1 = st.multiselect('Select Variable(s) to use in Severity Index', columns) 
