@@ -1,8 +1,83 @@
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import normalize
+from urllib.request import urlopen
+import json
+from sklearn import preprocessing
 
 def app():
+
+
+
+    merged_data = pd.read_csv("merged_data.csv")
+    def fill_missing(series, limit):
+        series = series.astype('str')
+        series = ['0' + i if len(i) < limit else i for i in series]
+        return series
+    merged_data['fips'] = fill_missing(merged_data['fips'], 5)
+
+    columns = list(merged_data.columns)
+    my_dict = {k: v for v, k in enumerate(columns)}
+
+    with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+        counties = json.load(response)
+
+
+    user_merged = merged_data.copy()
+    def plot_severity(features, target):
+        metrics = merged_data.iloc[:,features]
+        matrix = metrics.corr(method = "spearman")
+        f, ax = plt.subplots(figsize=(8, 6))
+        sns.heatmap(matrix, mask=np.zeros_like(matrix, dtype=np.bool), cmap = "flare_r", square=True, ax=ax);
+        weights = list(matrix[target].values)
+        weights.remove(1)
+        n2 = list(normalize([weights], norm="l1")[0])
+        
+        features = metrics.drop(columns = [target], axis = 1)
+        scalars = features * n2
+        user_merged['severity_index'] = (scalars.astype(float).sum(1)) 
+
+
+        m =  user_merged['severity_index']
+        user_merged['severity_index'] = np.log(m, where=(m>0))
+        user_merged['severity_index'] = (user_merged['severity_index'] - np.min(user_merged['severity_index'])) / (np.max(user_merged['severity_index']) - np.min(user_merged['severity_index']))
+
+
+        fig = px.choropleth_mapbox(user_merged, geojson=counties, locations='fips', color= 'severity_index',
+                                color_continuous_scale="speed",
+                                hover_name = 'county',
+                                hover_data = {'fips':False, 'severity_index':True},
+                                labels = {'severity_index':'Severity Index', 'county':'County'},
+                                mapbox_style="carto-positron",
+                                zoom=2.8, center = {"lat": 37.0902, "lon": -95.7129},
+                                title = "Overlay Of Factors Considered (Severity Index)",
+                                opacity=0.5
+                                )
+        fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    #     fig.update(layout_coloraxis_showscale=False)
+        plt.show()
+        fig.show()
+    #     return n2
+
+    columns.remove('COVID Cases per Capita') 
+    columns.remove('COVID Deaths per Capita') 
+    columns.remove('Total COVID Cases') 
+    columns.remove('Total COVID Deaths')
+
+    features = st.multiselect('Select Variable(s) to use in Severity Index', columns) 
+    if st.button('Submit', key = '1'): 
+        user_input1 = features 
+    target = st.selectbox('Select Basis of Severity', ('COVID Cases per Capita', 'COVID Deaths per Capita', 'Total COVID Cases', 'Total COVID Deaths')) 
+    user_input2 = target 
+    st.write(plot_severity(user_input1, user_input2), use_column_width = True) 
+
+
     st.write("## Severity Index")
 
     st.write('''
