@@ -69,12 +69,13 @@ def app():
     columns.remove('Total COVID Cases') 
     columns.remove('Total COVID Deaths')
 
-    features = st.multiselect('Select Variable(s) to use in Severity Index', columns) 
-    if st.button('Submit', key = '1'): 
-        user_input1 = features 
     target = st.selectbox('Select Basis of Severity', ('COVID Cases per Capita', 'COVID Deaths per Capita', 'Total COVID Cases', 'Total COVID Deaths')) 
-    user_input2 = target 
-    st.write(plot_severity(user_input1, user_input2), use_column_width = True) 
+    features = st.multiselect('Select Variable(s) to use in Severity Index', columns) 
+ 
+    if st.button('Submit', key = '1'): 
+        st.write(plot_severity(features, target), use_column_width = True) 
+
+#    user_input2 = target
 
 
     st.write("## Severity Index")
