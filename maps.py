@@ -13,25 +13,20 @@ def app():
     # severity_index_code = severity_index.read()
     # components.html(severity_index_code, height=550)
 
-    st.subheader('Fire Map')
-    fireMap = open("firemap1.html", 'r', encoding='utf-8')
-    fireMap_code = fireMap.read()
-    components.html(fireMap_code, height=550)
-
     st.subheader('Number of Cases Per County')
     numCases = open("num_cases.html", 'r', encoding='utf-8')
     numCases_code = numCases.read()
     components.html(numCases_code, height=550)
 
-    st.subheader('Rate of Change of Cases Per County')
-    firstDeriv = open("firstDerivative.html", 'r', encoding='utf-8')
-    firstDeriv_code = firstDeriv.read()
-    components.html(firstDeriv_code, height=550)
+    # st.subheader('Rate of Change of Cases Per County')
+    # firstDeriv = open("firstDerivative.html", 'r', encoding='utf-8')
+    # firstDeriv_code = firstDeriv.read()
+    # components.html(firstDeriv_code, height=550)
 
-    st.subheader('Rate of Change of Rate of Change of Cases Per County')
-    secondDeriv = open("secondDerivative.html", 'r', encoding='utf-8')
-    secondDeriv_code = secondDeriv.read()
-    components.html(secondDeriv_code, height=550)
+    # st.subheader('Rate of Change of Rate of Change of Cases Per County')
+    # secondDeriv = open("secondDerivative.html", 'r', encoding='utf-8')
+    # secondDeriv_code = secondDeriv.read()
+    # components.html(secondDeriv_code, height=550)
 
     st.subheader('Elderly People Per County')
     elderlyCount = open("ElderlyCount.html", 'r', encoding='utf-8')
