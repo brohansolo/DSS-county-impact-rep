@@ -36,12 +36,9 @@ On CDC’s website, we found [numerous such recommended parameters](https://www.
 1. Age of Population
 2. Transmission rate
 3. Recovery Rate
-4. Income
 5. Number of hospital beds available
 6. Number of hospitals
-7. People with pre-existing conditions
 8. Habits of mask wearing
-9. Anti-vaxx sentiment
 10. Number of uninsured people
 11. Number of hospitals
 
