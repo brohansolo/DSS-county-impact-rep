@@ -5,5 +5,3 @@ plotly
 sklearn
 seaborn
 matplotlib
-json
-urllib
